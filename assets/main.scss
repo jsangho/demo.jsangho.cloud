@@ -1,0 +1,244 @@
+---
+# Front matter is required so Jekyll runs this file through Sass.
+# This file overrides the copy shipped inside the minima gem.
+---
+
+@import "minima";
+
+// ── 토큰 ────────────────────────────────────────────────
+$ink:        #14213d;  // 제목·강조
+$body:       #33384a;  // 본문
+$muted:      #6b7280;  // 보조 정보
+$hairline:   #e3e6ee;  // 얇은 구분선
+$accent:     #1d4ed8;  // 링크·번호
+$paper:      #ffffff;
+
+$sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+       "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+
+// 목차의 `1)` 형식 — list-style 로는 표현할 수 없어 별도 정의한다.
+@counter-style paren-decimal {
+  system: extends decimal;
+  suffix: ") ";
+}
+
+body {
+  font-family: $sans;
+  color: $body;
+  background: $paper;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.003em;
+}
+
+// ── 표지 ────────────────────────────────────────────────
+.is-cover {
+  margin: 0;
+}
+
+.cover {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 1.75rem;
+  box-sizing: border-box;
+}
+
+.cover__inner {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.cover__eyebrow {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: $muted;
+}
+
+.cover__title {
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: $ink;
+}
+
+.cover__rule {
+  width: 3.5rem;
+  height: 3px;
+  margin: 2rem 0 2.5rem;
+  background: $ink;
+}
+
+.cover__meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.9rem 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+
+  dt {
+    margin: 0;
+    font-weight: 600;
+    color: $muted;
+  }
+
+  dd {
+    margin: 0;
+    color: $body;
+  }
+}
+
+.cover__aside {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.8125rem;
+  color: $muted;
+  white-space: nowrap;
+}
+
+.cover__cta {
+  display: inline-block;
+  margin-top: 3rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover { color: $ink; }
+}
+
+@media (max-width: 30rem) {
+  .cover__meta {
+    grid-template-columns: 1fr;
+    gap: 0.25rem 0;
+
+    dt { margin-top: 0.9rem; }
+  }
+}
+
+// ── 본문 페이지 ─────────────────────────────────────────
+.report {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem 0 4rem;
+}
+
+.report__header {
+  padding-bottom: 1.75rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid $hairline;
+}
+
+.report__eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: $muted;
+}
+
+.report__title {
+  margin: 0;
+  font-size: 2.125rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $ink;
+}
+
+// ── 목차 ────────────────────────────────────────────────
+// 최상위 = 장(1. 2. 3.), 하위 = 절(1) 2) 3))
+.report__body > ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: chapter;
+
+  > li {
+    counter-increment: chapter;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid $hairline;
+
+    &:last-child { border-bottom: 0; }
+
+    // 장 제목
+    > strong {
+      display: block;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: $ink;
+      letter-spacing: -0.015em;
+
+      &::before {
+        content: counter(chapter) ".";
+        display: inline-block;
+        min-width: 1.75rem;
+        color: $accent;
+        font-variant-numeric: tabular-nums;
+      }
+    }
+  }
+
+  // 절 목록
+  ol {
+    margin: 0.85rem 0 0 1.75rem;
+    padding: 0;
+    list-style: paren-decimal;
+    color: $body;
+
+    li {
+      margin: 0;
+      padding: 0.28rem 0;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+
+    &::marker,
+    li::marker {
+      color: $muted;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+}
+
+// ── 사이트 헤더/푸터 톤 정리 ────────────────────────────
+.site-header {
+  border-top: 0;
+  border-bottom: 1px solid $hairline;
+}
+
+.site-title,
+.site-title:visited {
+  color: $ink;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.site-nav .page-link,
+.site-nav .page-link:visited {
+  color: $body;
+}
+
+.site-footer {
+  border-top: 1px solid $hairline;
+  color: $muted;
+}
+
+// ── 인쇄 ────────────────────────────────────────────────
+@media print {
+  .site-header,
+  .site-footer,
+  .cover__cta { display: none; }
+
+  .cover { min-height: auto; padding: 0; page-break-after: always; }
+  .report { max-width: none; }
+
+  body { color: #000; }
+}

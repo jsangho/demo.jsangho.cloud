@@ -27,6 +27,11 @@ baseurl: "" # GitHub Actions 빌드 시 configure-pages 가 --baseurl 로 주입
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: jsangho
 
+# 헤더 네비에 노출할 페이지. 표지(index.md)는 제외한다.
+header_pages:
+  - toc.md
+  - about.markdown
+
 # Build settings
 theme: minima
 plugins:

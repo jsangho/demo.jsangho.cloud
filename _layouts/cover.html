@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+  {%- include head.html -%}
+  <body class="is-cover">
+    <main class="cover">
+      <div class="cover__inner">
+        <p class="cover__eyebrow">{{ page.subtitle }}</p>
+        <h1 class="cover__title">{{ page.title }}</h1>
+
+        <div class="cover__rule" role="presentation"></div>
+
+        <dl class="cover__meta">
+          <dt>사업명</dt>
+          <dd>{{ page.title }}</dd>
+
+          <dt>개발자</dt>
+          <dd>
+            {{ page.members | join: " · " }}
+            <span class="cover__aside">총 {{ page.members | size }}명</span>
+          </dd>
+
+          <dt>개발기간</dt>
+          <dd>
+            {{ page.period_start }} &ndash; {{ page.period_end }}
+            <span class="cover__aside">{{ page.period_note }}</span>
+          </dd>
+
+          <dt>작성일</dt>
+          <dd>{{ page.issued }}</dd>
+        </dl>
+
+        <a class="cover__cta" href="{{ '/toc/' | relative_url }}">목차 보기 &rarr;</a>
+      </div>
+    </main>
+  </body>
+</html>
