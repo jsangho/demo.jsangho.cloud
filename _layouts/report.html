@@ -9,7 +9,7 @@ layout: default
       {%- if page.chapter -%}
         제 {{ page.chapter }} 장
       {%- else -%}
-        {{ site.title_short | default: site.title }} &middot; 개발 결과 보고서
+        {{ site.brand | default: site.title }} &middot; 개발 결과 보고서
       {%- endif -%}
     </p>
     <h1 class="report__title">{{ page.title }}</h1>
