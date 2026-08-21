@@ -1,8 +1,8 @@
 ---
 layout: report
 title: 결론 및 향후 과제
-permalink: /08-conclusion/
-chapter: 8
+permalink: /09-conclusion/
+chapter: 9
 ---
 
 ## 1) 개발 결과 요약

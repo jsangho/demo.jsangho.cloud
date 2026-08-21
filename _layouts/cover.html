@@ -6,19 +6,26 @@
       <div class="cover__inner">
         <p class="cover__eyebrow">{{ page.subtitle }}</p>
         {%- comment -%}
-          title_break 에 적힌 어절 뒤에서 제목을 강제로 끊는다. 제목 문자열은
-          page.title 하나뿐이므로 사업명이 바뀌어도 두 곳을 고칠 일이 없다.
-          어절이 제목에 없으면 그냥 한 덩어리로 렌더한다.
+          title_break(어절 목록)에 적힌 어절 뒤에서 제목을 차례로 끊는다. 제목
+          문자열은 page.title 하나뿐이므로 사업명이 바뀌어도 두 곳을 고칠 일이 없다.
+          제목에 없는 어절은 건너뛰고, 목록이 비어 있으면 한 덩어리로 렌더한다.
         {%- endcomment -%}
-        {%- if page.title_break and page.title contains page.title_break -%}
-          {%- assign title_parts = page.title | split: page.title_break -%}
+        {%- assign title_rest = page.title -%}
+        {%- assign title_lines = "" -%}
+        {%- for brk in page.title_break -%}
+          {%- if title_rest contains brk -%}
+            {%- assign title_parts = title_rest | split: brk -%}
+            {%- assign title_head = title_parts[0] | append: brk | strip -%}
+            {%- assign title_lines = title_lines | append: title_head | append: "%%LINE%%" -%}
+            {%- assign title_rest = title_parts[1] | strip -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- assign title_lines = title_lines | append: title_rest | split: "%%LINE%%" -%}
         <h1 class="cover__title">
-          <span>{{ title_parts[0] | append: page.title_break | strip }}</span>
-          <span>{{ title_parts[1] | strip }}</span>
+          {%- for line in title_lines %}
+          <span>{{ line }}</span>
+          {%- endfor %}
         </h1>
-        {%- else -%}
-        <h1 class="cover__title">{{ page.title }}</h1>
-        {%- endif %}
         {%- if page.title_en %}
         <p class="cover__title-en">{{ page.title_en }}</p>
         {%- endif %}

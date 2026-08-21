@@ -1,12 +1,12 @@
 <!-- minima 2.5.2 의 동명 include 를 덮어쓴다.
-     정식 사업명(site.title)이 길어 헤더에서 줄바꿈되므로 팀 마크(site.brand)를 쓴다.
+     정식 사업명(site.title)이 길어 헤더에서 줄바꿈되므로 축약 제목(site.title_short)을 쓴다.
      그 외 마크업은 gem 원본과 동일하다. -->
 <header class="site-header" role="banner">
 
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.brand | default: site.title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title_short | default: site.title | escape }}</a>
 
     {%- if page_paths -%}
       <nav class="site-nav">
