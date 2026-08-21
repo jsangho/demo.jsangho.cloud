@@ -1,9 +1,11 @@
 # CLAUDE.md
 
-Title Demo 사업의 **개발 결과 보고서**를 Jekyll 정적 사이트로 작성·배포하는 리포지토리다.
+**개발 결과 보고서**를 Jekyll 정적 사이트로 작성·배포하는 리포지토리다.
 코드 프로젝트가 아니라 문서 프로젝트이므로, 대부분의 작업은 마크다운 페이지 추가와 레이아웃/스타일 조정이다.
 
-- 사업명: Title Demo
+- 사업명(국문): AI 에이전트 기술을 적용한 생활체육 용병 구인 및 실력 검증 플랫폼
+- 사업명(영문): AI Agent-powered Amateur Sports Mercenary Recruitment & Skill Verification Platform
+- 약칭: 생활체육 AI 에이전트 플랫폼
 - 개발자: 정상호, 백성검, 정어진, 박민호 (총 4명)
 - 개발기간: 2026-08-20 ~ 2026-10-27 (69일, 약 10주)
 - 배포 URL: https://jsangho.github.io/demo.jsangho.cloud/
@@ -99,9 +101,17 @@ title: 사업 개요
 ### 3.4 새 장(chapter) 추가 절차
 
 1. 리포 루트에 `NN-slug.md` 생성 (예: `01-overview.md`)
-2. front matter에 `layout: report`, `title`, `permalink: /NN-slug/`
+2. front matter에 `layout: report`, `title`, `permalink: /NN-slug/`, `chapter: N`
 3. `toc.md`의 해당 항목을 링크로 연결
 4. **`header_pages`에는 추가하지 않는다** — 8개 장이 상단 네비를 채우면 못 쓴다. 이동은 목차를 통한다
+
+`chapter`(숫자)는 필수다. `report` 레이아웃이 이 값으로 머리말의 `제 N 장`과 본문 하단 이전/다음 네비를 만든다. 빠뜨리면 그 페이지만 네비 없이 렌더되고, 앞뒤 장의 네비에서도 빠진다.
+
+`toc.md`의 링크는 `baseurl` 때문에 `relative_url`을 거쳐야 한다. 경로를 직접 쓰면 배포본에서 404가 난다.
+
+```markdown
+1. **[사업 개요]({{ '/01-overview/' | relative_url }})**
+```
 
 ### 3.5 front matter
 
@@ -115,6 +125,26 @@ period_note: 69일 · 약 10주
 ```
 
 팀원 이름·기간이 바뀌면 `index.md`의 이 값만 고친다. 레이아웃은 건드리지 않는다.
+영문 사업명은 `index.md`의 `title_en`이며, 표지에서 국문 제목 아래에 부제로 렌더된다.
+
+표지 메타의 `저장소`·`데모` 줄은 `repo_url`·`demo_url`이 만든다. 표기 문자열은 레이아웃이 URL에서 스킴만 떼어 쓰므로 **주소만 고치면 링크와 라벨이 함께 바뀐다.** 값을 비우거나 지우면 그 줄 자체가 렌더되지 않는다.
+
+### 3.5.1 사업명은 세 군데에 나뉘어 있다
+
+국문 사업명이 길어(공백 포함 38자) 자리에 따라 다른 값을 쓴다. 이름이 바뀌면 **네 곳을 함께** 고친다.
+
+| 값 | 위치 | 쓰이는 곳 |
+|---|---|---|
+| `title` | `_config.yml`, `index.md` | 표지 대제목, `<title>`, og |
+| `title_short` | `_config.yml` | 상단 헤더 브랜드, `report` 머리말 |
+| `title_en` | `index.md` | 표지 영문 부제 |
+| `description` | `_config.yml` | 메타 설명 |
+
+`_includes/header.html`은 minima gem의 동명 파일을 덮어쓴 사본이다. 정식 사업명이 헤더에서 줄바꿈되는 것을 막으려고 `site.title_short`를 쓰는 한 줄만 다르다. gem을 올리면 이 사본도 대조한다.
+
+`_config.yml`의 `tagline`은 지우지 않는다. 표지는 `page.title == site.title`이라 jekyll-seo-tag가 꼬리말로 `description` 전문을 붙이는데, `tagline`이 이걸 `개발 결과 보고서`로 대체한다.
+
+국문 제목·본문의 긴 한글 값에는 `word-break: keep-all`이 걸려 있다(`.cover__title`, `.cover__meta dd`). 어절 중간에서 줄이 끊기지 않게 하는 용도이므로 지우지 않는다.
 
 ### 3.6 스타일
 
@@ -141,11 +171,12 @@ curl -sI https://jsangho.github.io/demo.jsangho.cloud/assets/main.css | head -3
 - 개발 환경(rbenv·Ruby·Jekyll), 로컬 미리보기, Tailscale 원격 접근, systemd 상시화
 - GitHub Actions → Pages 배포 파이프라인
 - 표지(`/`), 목차(`/toc/`), `cover`·`report` 레이아웃, 커스텀 스타일
+- **본문 8개 장 페이지 생성**(`01-overview.md` ~ `08-appendix.md`) 및 배포 — 2026-08-21
+- 목차 → 각 장 링크 연결, 장 하단 이전/다음 네비 (`report` 레이아웃 + `chapter` front matter)
 
 ### 남은 작업
 
-- **본문 8개 장 미작성** — 현재 목차만 있고 실제 내용 페이지가 없다
-- `toc.md`의 항목이 아직 링크가 아니다 (장 페이지 생성 후 연결)
+- **본문 내용 미작성** — 8개 장의 페이지와 절 구조는 잡혀 있으나, 각 절은 아직 `*작성 예정 — …*` 플레이스홀더다. 실제 작업 기록으로 채워야 한다
 - `about.markdown`이 Jekyll 스캐폴드 기본 문구 그대로다 — 교체하거나 `header_pages`에서 제거
 - `_config.yml`의 `url`이 비어 있어 `canonical`·`og:url`이 상대 경로로 출력된다 → `url: "https://jsangho.github.io"` 필요
-- 커스텀 도메인(`demo.jsangho.cloud`) 사용 여부 미정 — 쓰려면 `CNAME` 파일과 DNS 레코드 필요
+- **커스텀 도메인(`demo.jsangho.cloud`)이 아직 살아 있지 않다** — DNS가 해석되지 않고 `CNAME` 파일도 없다. 표지의 `데모` 링크(`index.md`의 `demo_url`)는 이미 이 주소를 가리키므로 **현재 눌러도 연결되지 않는다.** 실제로 쓰려면 `CNAME` 파일 + DNS 레코드가 필요하고, 안 쓸 거면 `demo_url`을 Pages 주소로 바꾼다

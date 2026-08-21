@@ -6,12 +6,25 @@
       <div class="cover__inner">
         <p class="cover__eyebrow">{{ page.subtitle }}</p>
         <h1 class="cover__title">{{ page.title }}</h1>
+        {%- if page.title_en %}
+        <p class="cover__title-en">{{ page.title_en }}</p>
+        {%- endif %}
 
         <div class="cover__rule" role="presentation"></div>
 
         <dl class="cover__meta">
           <dt>사업명</dt>
           <dd>{{ page.title }}</dd>
+
+          {%- if page.team %}
+          <dt>팀명</dt>
+          <dd>
+            {{ page.team }}
+            {%- if page.team_ko %}
+            <span class="cover__aside">{{ page.team_ko }}</span>
+            {%- endif %}
+          </dd>
+          {%- endif %}
 
           <dt>개발자</dt>
           <dd>
@@ -27,6 +40,25 @@
 
           <dt>작성일</dt>
           <dd>{{ page.issued }}</dd>
+
+          {%- comment -%} 주소 표기는 URL 에서 스킴만 떼어 쓴다. 값이 바뀌면 링크와 함께 따라간다. {%- endcomment -%}
+          {%- if page.repo_url %}
+          <dt>저장소</dt>
+          <dd>
+            <a class="cover__link" href="{{ page.repo_url }}">
+              {{- page.repo_url | remove: "https://" | remove: "http://" -}}
+            </a>
+          </dd>
+          {%- endif %}
+
+          {%- if page.demo_url %}
+          <dt>데모</dt>
+          <dd>
+            <a class="cover__link" href="{{ page.demo_url }}">
+              {{- page.demo_url | remove: "https://" | remove: "http://" -}}
+            </a>
+          </dd>
+          {%- endif %}
         </dl>
 
         <a class="cover__cta" href="{{ '/toc/' | relative_url }}">목차 보기 &rarr;</a>

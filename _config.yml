@@ -18,11 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Title Demo
+title: AI 에이전트 기술을 적용한 생활체육 용병 구인 및 실력 검증 플랫폼
+# 상단 헤더/머리말처럼 좁은 자리에 쓰는 약칭. 정식 사업명은 title 을 쓴다.
+title_short: 생활체육 AI 에이전트 플랫폼
+# 표지의 <title> 꼬리말. 없으면 jekyll-seo-tag 가 description 전문을 붙인다.
+tagline: 개발 결과 보고서
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Title Demo 사업 개발 결과 보고서. 개발 환경 구축부터 배포 자동화까지의
-  수행 내역을 정리한 문서입니다.
+  AI 에이전트 기술을 적용한 생활체육 용병 구인 및 실력 검증 플랫폼 개발 결과 보고서.
+  개발 환경 구축부터 배포 자동화까지의 수행 내역을 정리한 문서입니다.
 baseurl: "" # GitHub Actions 빌드 시 configure-pages 가 --baseurl 로 주입한다
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: jsangho
