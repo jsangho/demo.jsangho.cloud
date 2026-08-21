@@ -15,6 +15,6 @@ period_start: 2026년 8월 20일(목)
 period_end: 2026년 10월 27일(화)
 period_note: 69일 · 약 10주
 issued: 2026년 8월 20일
-repo_url: https://github.com/jsangho/demo.jsangho.cloud
-demo_url: https://demo.jsangho.cloud
+repo_url: https://github.com/jsangho/supersub.jsangho.cloud
+demo_url: https://supersub.jsangho.cloud
 ---

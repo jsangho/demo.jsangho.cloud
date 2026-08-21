@@ -8,7 +8,8 @@
 - 약칭: 생활체육 AI 에이전트 플랫폼
 - 개발자: 정상호, 백성검, 정어진, 박민호 (총 4명)
 - 개발기간: 2026-08-20 ~ 2026-10-27 (69일, 약 10주)
-- 배포 URL: https://jsangho.github.io/demo.jsangho.cloud/
+- 리포: `jsangho/supersub.jsangho.cloud` (2026-08-21에 `demo.jsangho.cloud`에서 개명. 옛 주소는 GitHub이 리다이렉트해 주지만 새 주소를 쓴다)
+- 배포 URL: https://jsangho.github.io/supersub.jsangho.cloud/
 
 ---
 
@@ -159,7 +160,7 @@ CSS는 `assets/main.scss` 한 파일에서만 고친다. 이 파일이 minima ge
 GitHub Pages는 `cache-control: max-age=600`이다. 배포 직후 브라우저에 옛 CSS가 남아 스타일이 안 먹은 것처럼 보일 수 있다. 서버 상태를 먼저 확인하고 브라우저를 의심한다.
 
 ```bash
-curl -sI https://jsangho.github.io/demo.jsangho.cloud/assets/main.css | head -3
+curl -sI https://jsangho.github.io/supersub.jsangho.cloud/assets/main.css | head -3
 ```
 
 ---
@@ -179,4 +180,4 @@ curl -sI https://jsangho.github.io/demo.jsangho.cloud/assets/main.css | head -3
 - **본문 내용 미작성** — 8개 장의 페이지와 절 구조는 잡혀 있으나, 각 절은 아직 `*작성 예정 — …*` 플레이스홀더다. 실제 작업 기록으로 채워야 한다
 - `about.markdown`이 Jekyll 스캐폴드 기본 문구 그대로다 — 교체하거나 `header_pages`에서 제거
 - `_config.yml`의 `url`이 비어 있어 `canonical`·`og:url`이 상대 경로로 출력된다 → `url: "https://jsangho.github.io"` 필요
-- **커스텀 도메인(`demo.jsangho.cloud`)이 아직 살아 있지 않다** — DNS가 해석되지 않고 `CNAME` 파일도 없다. 표지의 `데모` 링크(`index.md`의 `demo_url`)는 이미 이 주소를 가리키므로 **현재 눌러도 연결되지 않는다.** 실제로 쓰려면 `CNAME` 파일 + DNS 레코드가 필요하고, 안 쓸 거면 `demo_url`을 Pages 주소로 바꾼다
+- **커스텀 도메인(`supersub.jsangho.cloud`)이 아직 살아 있지 않다** — DNS가 해석되지 않고 `CNAME` 파일도 없다. 표지의 `데모` 링크(`index.md`의 `demo_url`)는 이미 이 주소를 가리키므로 **현재 눌러도 연결되지 않는다.** 실제로 쓰려면 `CNAME` 파일 + DNS 레코드가 필요하고, 안 쓸 거면 `demo_url`을 Pages 주소로 바꾼다
