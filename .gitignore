@@ -3,3 +3,8 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# 실제 환경 변수. .env.example 만 커밋한다
+.env
+.env.*
+!.env.example

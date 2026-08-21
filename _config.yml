@@ -58,6 +58,8 @@ plugins:
 # 내부 문서는 반드시 여기에 넣는다.
 exclude:
   - CLAUDE.md
+  - .env
+  - .env.example
   - README.md
   - .claude/
   - Gemfile
