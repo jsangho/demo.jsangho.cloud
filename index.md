@@ -1,6 +1,7 @@
 ---
 layout: cover
 title: AI 에이전트 기술을 적용한 생활체육 용병 구인 및 실력 검증 플랫폼
+title_break: 적용한   # 표지 제목을 이 어절 뒤에서 끊어 2줄로 만든다
 title_en: AI Agent-powered Amateur Sports Mercenary Recruitment &amp; Skill Verification Platform
 permalink: /
 subtitle: 개발 결과 보고서

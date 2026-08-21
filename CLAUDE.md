@@ -130,18 +130,25 @@ period_note: 69일 · 약 10주
 
 표지 메타의 `저장소`·`데모` 줄은 `repo_url`·`demo_url`이 만든다. 표기 문자열은 레이아웃이 URL에서 스킴만 떼어 쓰므로 **주소만 고치면 링크와 라벨이 함께 바뀐다.** 값을 비우거나 지우면 그 줄 자체가 렌더되지 않는다.
 
-### 3.5.1 사업명은 세 군데에 나뉘어 있다
+### 3.5.1 이름은 자리에 따라 다른 값을 쓴다
 
-국문 사업명이 길어(공백 포함 38자) 자리에 따라 다른 값을 쓴다. 이름이 바뀌면 **네 곳을 함께** 고친다.
+국문 사업명이 길어(공백 포함 38자) 좁은 자리에는 그대로 못 넣는다. 사업명이 바뀌면 **아래 네 곳을 함께** 고친다(`brand`는 팀명이라 별개다).
 
 | 값 | 위치 | 쓰이는 곳 |
 |---|---|---|
 | `title` | `_config.yml`, `index.md` | 표지 대제목, `<title>`, og |
-| `title_short` | `_config.yml` | 상단 헤더 브랜드, `report` 머리말 |
+| `title_short` | `_config.yml` | `report` 머리말 |
 | `title_en` | `index.md` | 표지 영문 부제 |
 | `description` | `_config.yml` | 메타 설명 |
+| `brand` | `_config.yml` | 상단 헤더 좌측 — **사업명이 아니라 팀명**(`Super-Sub`) |
 
-`_includes/header.html`은 minima gem의 동명 파일을 덮어쓴 사본이다. 정식 사업명이 헤더에서 줄바꿈되는 것을 막으려고 `site.title_short`를 쓰는 한 줄만 다르다. gem을 올리면 이 사본도 대조한다.
+`_includes/header.html`은 minima gem의 동명 파일을 덮어쓴 사본이다. 정식 사업명이 헤더에서 줄바꿈되는 것을 막으려고 `site.brand`를 쓰는 한 줄만 다르다. gem을 올리면 이 사본도 대조한다.
+
+### 3.5.2 표지 제목의 줄바꿈
+
+표지 제목은 `index.md`의 `title_break`에 적힌 어절 **뒤에서** 끊어 2줄로 렌더된다(현재 `적용한`). 레이아웃이 `title` 하나를 쪼개 쓰므로 제목 문자열이 중복되지 않는다. 어절이 제목에 없으면 그냥 한 덩어리로 나온다.
+
+줄 수는 CSS와 맞물려 있다. `.cover__title`의 `font-size` 상한(2.4rem)과 `.cover__inner`의 `max-width`(44rem)는 **둘째 줄이 한 줄로 들어가도록** 잡은 값이다. 둘 중 하나만 건드려도 제목이 3줄로 흐트러지므로, 크기를 키우려면 폭도 같이 키우고 브라우저에서 확인한다.
 
 `_config.yml`의 `tagline`은 지우지 않는다. 표지는 `page.title == site.title`이라 jekyll-seo-tag가 꼬리말로 `description` 전문을 붙이는데, `tagline`이 이걸 `개발 결과 보고서`로 대체한다.
 

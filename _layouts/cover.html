@@ -5,7 +5,20 @@
     <main class="cover">
       <div class="cover__inner">
         <p class="cover__eyebrow">{{ page.subtitle }}</p>
+        {%- comment -%}
+          title_break 에 적힌 어절 뒤에서 제목을 강제로 끊는다. 제목 문자열은
+          page.title 하나뿐이므로 사업명이 바뀌어도 두 곳을 고칠 일이 없다.
+          어절이 제목에 없으면 그냥 한 덩어리로 렌더한다.
+        {%- endcomment -%}
+        {%- if page.title_break and page.title contains page.title_break -%}
+          {%- assign title_parts = page.title | split: page.title_break -%}
+        <h1 class="cover__title">
+          <span>{{ title_parts[0] | append: page.title_break | strip }}</span>
+          <span>{{ title_parts[1] | strip }}</span>
+        </h1>
+        {%- else -%}
         <h1 class="cover__title">{{ page.title }}</h1>
+        {%- endif %}
         {%- if page.title_en %}
         <p class="cover__title-en">{{ page.title_en }}</p>
         {%- endif %}
@@ -13,9 +26,7 @@
         <div class="cover__rule" role="presentation"></div>
 
         <dl class="cover__meta">
-          <dt>사업명</dt>
-          <dd>{{ page.title }}</dd>
-
+          {%- comment -%} 사업명은 바로 위 대제목과 겹치므로 메타에 다시 넣지 않는다. {%- endcomment -%}
           {%- if page.team %}
           <dt>팀명</dt>
           <dd>
