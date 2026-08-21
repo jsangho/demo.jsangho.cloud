@@ -19,8 +19,10 @@
 # in the templates via {{ site.myvariable }}.
 
 title: 생활체육 경기 영상을 멀티모달로 분석하여 용병을 구인하고 RAG 검증을 자동화하는 플랫폼 (Hit Rate 90%, Recall@5 90% 달성)
-# 사업명이 길어 들어가지 않는 좁은 자리(상단 헤더, 본문 머리말)에 쓰는 축약 제목.
+# 사업명이 길어 들어가지 않는 좁은 자리(상단 헤더, 푸터)에 쓰는 축약 제목.
 title_short: 멀티모달 용병 스카우팅 & RAG 검증 플랫폼
+# 본문 각 장 머리말에 쓰는 팀 마크. 사업명이 아니라 팀명이다.
+brand: Super-Sub
 # 표지의 <title> 꼬리말. 없으면 jekyll-seo-tag 가 description 전문을 붙인다.
 tagline: 개발 결과 보고서
 email:

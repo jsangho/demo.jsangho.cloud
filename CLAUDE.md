@@ -137,11 +137,12 @@ period_note: 69일 · 약 10주
 | 값 | 위치 | 쓰이는 곳 |
 |---|---|---|
 | `title` | `_config.yml`, `index.md` | 표지 대제목, `<title>`, og |
-| `title_short` | `_config.yml` | 상단 헤더 좌측, `report` 머리말 |
+| `title_short` | `_config.yml` | 상단 헤더 좌측, 푸터 3곳 |
 | `title_en` | `index.md` | 표지 영문 부제 |
-| `description` | `_config.yml` | 메타 설명 |
+| `description` | `_config.yml` | 메타 설명, 푸터 우측 |
+| `brand` | `_config.yml` | 본문 각 장 머리말 — **사업명이 아니라 팀명**(`Super-Sub`) |
 
-좁은 자리(헤더·머리말)는 `title_short` 하나로 통일했다. 팀명(`Super-Sub`)은 표지 메타의 `팀명` 줄에만 나오며 제목 계열과 별개다(`index.md`의 `team`·`team_ko`).
+좁은 자리가 두 갈래인 이유는 성격이 달라서다. 헤더·푸터는 사이트가 무엇인지 알리는 자리라 축약 제목을, 본문 머리말은 누가 쓴 보고서인지 밝히는 자리라 팀명을 쓴다. 표지 메타의 `팀명` 줄은 또 별개 값이다(`index.md`의 `team`·`team_ko`).
 
 `_includes/header.html`은 minima gem의 동명 파일을 덮어쓴 사본이다. 정식 사업명이 헤더에서 줄바꿈되는 것을 막으려고 `site.title_short`를 쓰는 한 줄만 다르다. gem을 올리면 이 사본도 대조한다.
 
