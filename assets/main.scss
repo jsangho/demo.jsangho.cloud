@@ -208,6 +208,136 @@ body {
   }
 }
 
+// 목차의 장 제목이 링크가 되면 기본 링크색 대신 본문 톤을 유지한다.
+.report__body > ol > li > strong a {
+  color: $ink;
+  text-decoration: none;
+
+  &:hover {
+    color: $accent;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+// ── 본문 타이포그래피 ───────────────────────────────────
+.report__body {
+  h2 {
+    margin: 2.5rem 0 0.9rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: $ink;
+  }
+
+  > h2:first-child { margin-top: 0; }
+
+  p {
+    margin: 0 0 1rem;
+    line-height: 1.75;
+  }
+
+  // 미작성 안내 문구
+  p > em:only-child {
+    display: block;
+    padding: 0.85rem 1rem;
+    border-left: 3px solid $hairline;
+    background: #f8f9fc;
+    color: $muted;
+    font-size: 0.875rem;
+    font-style: normal;
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+    margin: 1.25rem 0;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+
+    th, td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid $hairline;
+      text-align: left;
+    }
+
+    th {
+      color: $muted;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  pre {
+    padding: 1rem;
+    border: 1px solid $hairline;
+    border-radius: 4px;
+    background: #f8f9fc;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+}
+
+// ── 장 이동 ─────────────────────────────────────────────
+.chapter-nav {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $hairline;
+  font-size: 0.875rem;
+
+  a { text-decoration: none; }
+}
+
+.chapter-nav__side {
+  flex: 1 1 0;
+  min-width: 0;
+
+  &--right { text-align: right; }
+}
+
+.chapter-nav__label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: $muted;
+}
+
+.chapter-nav__title {
+  display: block;
+  color: $ink;
+  font-weight: 600;
+
+  a:hover & { color: $accent; }
+}
+
+.chapter-nav__toc {
+  flex: 0 0 auto;
+  align-self: center;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid $hairline;
+  border-radius: 999px;
+  color: $muted;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+@media (max-width: 30rem) {
+  .chapter-nav {
+    flex-wrap: wrap;
+
+    .chapter-nav__toc { order: 3; margin: 0 auto; }
+  }
+}
+
 // ── 사이트 헤더/푸터 톤 정리 ────────────────────────────
 .site-header {
   border-top: 0;
@@ -235,7 +365,10 @@ body {
 @media print {
   .site-header,
   .site-footer,
+  .chapter-nav,
   .cover__cta { display: none; }
+
+  .report { page-break-before: always; }
 
   .cover { min-height: auto; padding: 0; page-break-after: always; }
   .report { max-width: none; }
