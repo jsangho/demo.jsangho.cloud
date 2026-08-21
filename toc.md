@@ -5,41 +5,46 @@ permalink: /toc/
 ---
 
 1. **[사업 개요]({{ '/01-overview/' | relative_url }})**
-   1. 사업 목적
-   2. 주요 사업 내용
-   3. 기대 효과
+   1. 추진 배경
+   2. 사업 목적
+   3. 주요 사업 내용
+   4. 기대 효과
 
-2. **[개발 환경 구성]({{ '/02-environment/' | relative_url }})**
-   1. 대상 시스템 사양
-   2. 빌드 의존성 패키지 설치
-   3. rbenv 설치 및 셸 초기화
-   4. Ruby 3.3.12 설치
-   5. Jekyll 및 Bundler 설치
+2. **[요구사항 분석]({{ '/02-requirements/' | relative_url }})**
+   1. 문제 정의
+   2. 사용자 요구사항
+   3. 기능 요구사항
+   4. 비기능 요구사항
 
-3. **[사이트 구축]({{ '/03-site-setup/' | relative_url }})**
-   1. Jekyll 사이트 생성
-   2. 디렉터리 구조
-   3. 로컬 미리보기 서버 실행
+3. **[시스템 설계]({{ '/03-architecture/' | relative_url }})**
+   1. 시스템 구성
+   2. 기술 스택
+   3. 데이터 모델
+   4. 화면 설계
 
-4. **[원격 접근 환경 구성]({{ '/04-remote-access/' | relative_url }})**
-   1. Tailscale 설치 및 인증
-   2. tailnet 접속 경로 검증
-   3. apt 저장소 오류 조치
+4. **[AI 에이전트 설계]({{ '/04-agent/' | relative_url }})**
+   1. 에이전트 구성
+   2. 매칭 에이전트
+   3. 도구 및 프롬프트 설계
+   4. 모델 선정
 
-5. **[미리보기 서비스 상시화]({{ '/05-service/' | relative_url }})**
-   1. systemd user unit 등록
-   2. 서비스 상태 및 제약 사항
+5. **[용병 구인 기능 개발]({{ '/05-recruitment/' | relative_url }})**
+   1. 모집 공고 등록
+   2. 지원 및 자동 매칭
+   3. 참여 확정 및 노쇼 관리
 
-6. **[배포 자동화]({{ '/06-deployment/' | relative_url }})**
-   1. GitHub Actions 워크플로 구성
-   2. GitHub Pages 활성화
-   3. 배포 결과 검증
+6. **[실력 검증 기능 개발]({{ '/06-verification/' | relative_url }})**
+   1. 스탯 체계 설계
+   2. 레드팀 교차 검증
+   3. 신뢰도 지표 산출
 
-7. **[이슈 및 조치 내역]({{ '/07-issues/' | relative_url }})**
-   1. 발생 이슈 목록
-   2. 조치 결과
-   3. 미해결 사항
+7. **[시험 및 검증 결과]({{ '/07-testing/' | relative_url }})**
+   1. 시험 환경 및 항목
+   2. 시험 결과
+   3. 발견 이슈 및 조치
 
-8. **[부록]({{ '/08-appendix/' | relative_url }})**
-   1. 명령어 요약
-   2. 참고 자료
+8. **[결론 및 향후 과제]({{ '/08-conclusion/' | relative_url }})**
+   1. 개발 결과 요약
+   2. 한계 및 미해결 과제
+   3. 향후 계획
+   4. 참고 자료

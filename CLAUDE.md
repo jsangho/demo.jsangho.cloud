@@ -180,7 +180,8 @@ curl -sI https://jsangho.github.io/supersub.jsangho.cloud/assets/main.css | head
 - 개발 환경(rbenv·Ruby·Jekyll), 로컬 미리보기, Tailscale 원격 접근, systemd 상시화
 - GitHub Actions → Pages 배포 파이프라인
 - 표지(`/`), 목차(`/toc/`), `cover`·`report` 레이아웃, 커스텀 스타일
-- **본문 8개 장 페이지 생성**(`01-overview.md` ~ `08-appendix.md`) 및 배포 — 2026-08-21
+- **본문 8개 장 페이지 생성**(`01-overview.md` ~ `08-conclusion.md`) 및 배포 — 2026-08-21
+- 목차를 사업 주제(구인·실력 검증)에 맞게 재구성 — 2026-08-21. 처음 잡았던 목차는 이 사이트를 만든 Jekyll 작업 기록이라 사업과 무관했다. 그 작업 내역은 이 문서(1·2절)에만 남긴다
 - 목차 → 각 장 링크 연결, 장 하단 이전/다음 네비 (`report` 레이아웃 + `chapter` front matter)
 
 ### 남은 작업
