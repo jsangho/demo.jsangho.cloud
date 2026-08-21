@@ -30,7 +30,10 @@ description: >- # this means to ignore newlines until "baseurl:"
   멀티모달 용병 스카우팅 & RAG 검증 플랫폼 개발 결과 보고서.
   요구사항 분석부터 시험 결과까지의 수행 내역을 정리한 문서입니다.
 baseurl: "" # GitHub Actions 빌드 시 configure-pages 가 --baseurl 로 주입한다
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# 사이트의 호스트. canonical·og:url 이 절대 경로로 나오려면 필요하다.
+# baseurl 과 달리 워크플로가 주입하지 않으므로 여기에 적는다.
+# 커스텀 도메인을 붙이면 이 값을 그 도메인으로 바꾼다.
+url: "https://jsangho.github.io"
 github_username: jsangho
 
 # 헤더 네비에 노출할 페이지. 표지(index.md)는 제외한다.
